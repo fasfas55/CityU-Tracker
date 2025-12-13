@@ -5,6 +5,7 @@ Unlike traditional agencies or limited official reports, this tracker is open, s
 
 
 ## 🌟Core Features
+--------------------------------------------------------------------------------------------------------------
 
 ### Anonymous application submissions
 Students can upload their offers, rejections, scholarships, and test scores without revealing identity.
@@ -18,13 +19,14 @@ A searchable, filterable list of past applications—by country, program, year, 
 ### Flexible program entry
 Students may type any program name (no restrictive predefined list), enabling coverage of global programs.
 
+--------------------------------------------------------------------------------------------------------------
 ### Insights & statistics
-Aggregated data showing:
+#### Aggregated data showing:
+Popular countries/regions
+Acceptance rates
+Average GPA / GRE / IELTS ranges
+Trends across faculties and graduation years
 
-#### Popular countries/regions
-#### Acceptance rates
-#### Average GPA / GRE / IELTS ranges
-#### Trends across faculties and graduation years
-
+--------------------------------------------------------------------------------------------------------------
 ### Future extensions
 Alumni interviews, guidance content, collaboration with agencies, premium analytics, and workshops.
