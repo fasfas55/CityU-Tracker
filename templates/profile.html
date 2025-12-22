@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile Defaults</title>
+{% endblock %}
+
+{% block body %}
+<header class="site-header">
+  <div class="page-frame">
+    <nav class="site-nav">
+      <a href="{{ url_for('home') }}" class="logo">CityU Tracker</a>
+      <ul class="nav-links">
+        <li><a href="{{ url_for('home') }}" class="{{ 'active' if current == 'home' else '' }}">Home</a></li>
+        <li><a href="{{ url_for('tracker') }}" class="{{ 'active' if current == 'tracker' else '' }}">Tracker</a></li>
+        <li><a href="{{ url_for('profile') }}" class="{{ 'active' if current == 'profile' else '' }}">Profile</a></li>
+        <li><a href="{{ url_for('about') }}" class="{{ 'active' if current == 'about' else '' }}">About</a></li>
+        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        {% else %}
+          <li><a href="{{ url_for('login') }}" class="{{ 'active' if current == 'login' else '' }}">Log In</a></li>
+          <li><a href="{{ url_for('register') }}" class="{{ 'active' if current == 'register' else '' }}">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="site-main">
+  <div class="page-frame">
+    <div class="card p-4">
+      <h2 class="page-title mb-2">Default Background</h2>
+      <p class="text-muted mb-4">Save your common scores once. We’ll prefill them when you submit new results.</p>
+
+      <form method="POST" class="submit-form">
+        {{ form.hidden_tag() }}
+
+        <!-- GPA -->
+        <p>
+          <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" href="#collapseGPA" role="button">
+            + GPA (optional)
+          </a>
+        </p>
+        <div class="collapse show" id="collapseGPA">
+          <div class="card card-body">
+            <div class="mb-3">
+              {{ form.gpa.label(class="form-label") }}
+              {{ form.gpa(class="form-control") }}
+              {% for e in form.gpa.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <!-- GRE / GMAT -->
+        <p class="mt-3">
+          <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" href="#collapseTests" role="button">
+            + GRE / GMAT (optional)
+          </a>
+        </p>
+        <div class="collapse show" id="collapseTests">
+          <div class="card card-body">
+            <h6 class="mb-2">GRE</h6>
+            <div class="row g-2">
+              <div class="col-md-6">
+                {{ form.gre_total.label(class="form-label") }}
+                {{ form.gre_total(class="form-control") }}
+              </div>
+              <div class="col-md-4">
+                {{ form.gre_q.label(class="form-label") }}
+                {{ form.gre_q(class="form-control") }}
+              </div>
+              <div class="col-md-4">
+                {{ form.gre_v.label(class="form-label") }}
+                {{ form.gre_v(class="form-control") }}
+              </div>
+              <div class="col-md-4">
+                {{ form.gre_awa.label(class="form-label") }}
+                {{ form.gre_awa(class="form-control") }}
+              </div>
+            </div>
+            {% for e in form.gre_total.errors %}<div class="text-danger small mt-2">{{ e }}</div>{% endfor %}
+
+            <hr class="my-3">
+
+            <h6 class="mb-2">GMAT</h6>
+            <div class="row g-2">
+              <div class="col-md-6">
+                {{ form.gmat_total.label(class="form-label") }}
+                {{ form.gmat_total(class="form-control") }}
+              </div>
+              <div class="col-md-4">
+                {{ form.gmat_q.label(class="form-label") }}
+                {{ form.gmat_q(class="form-control") }}
+              </div>
+              <div class="col-md-4">
+                {{ form.gmat_v.label(class="form-label") }}
+                {{ form.gmat_v(class="form-control") }}
+              </div>
+              <div class="col-md-4">
+                {{ form.gmat_di.label(class="form-label") }}
+                {{ form.gmat_di(class="form-control") }}
+              </div>
+            </div>
+            {% for e in form.gmat_total.errors %}<div class="text-danger small mt-2">{{ e }}</div>{% endfor %}
+          </div>
+        </div>
+
+        <!-- IELTS / TOEFL -->
+        <p class="mt-3">
+          <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" href="#collapseEnglish" role="button">
+            + IELTS / TOEFL (optional)
+          </a>
+        </p>
+        <div class="collapse show" id="collapseEnglish">
+          <div class="card card-body">
+
+            <h6 class="mb-2">IELTS</h6>
+            <div class="mb-2">
+              {{ form.ielts_total.label(class="form-label") }}
+              {{ form.ielts_total(class="form-control") }}
+              {% for e in form.ielts_total.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+            </div>
+            <div class="row g-2">
+              <div class="col-md-3">{{ form.ielts_l(class="form-control", placeholder="L") }}</div>
+              <div class="col-md-3">{{ form.ielts_r(class="form-control", placeholder="R") }}</div>
+              <div class="col-md-3">{{ form.ielts_w(class="form-control", placeholder="W") }}</div>
+              <div class="col-md-3">{{ form.ielts_s(class="form-control", placeholder="S") }}</div>
+            </div>
+
+            <hr class="my-3">
+
+            <h6 class="mb-2">TOEFL</h6>
+            <div class="mb-2">
+              {{ form.toefl_total.label(class="form-label") }}
+              {{ form.toefl_total(class="form-control") }}
+              {% for e in form.toefl_total.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+            </div>
+            <div class="row g-2">
+              <div class="col-md-3">{{ form.toefl_l(class="form-control", placeholder="L") }}</div>
+              <div class="col-md-3">{{ form.toefl_r(class="form-control", placeholder="R") }}</div>
+              <div class="col-md-3">{{ form.toefl_s(class="form-control", placeholder="S") }}</div>
+              <div class="col-md-3">{{ form.toefl_w(class="form-control", placeholder="W") }}</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="mt-4">
+          {{ form.submit(class="btn btn-primary w-100") }}
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
