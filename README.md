@@ -30,3 +30,6 @@ Trends across faculties and graduation years
 --------------------------------------------------------------------------------------------------------------
 ### Future extensions
 Alumni interviews, guidance content, collaboration with agencies, premium analytics, and workshops.
+
+<img width="1814" height="1267" alt="image" src="https://github.com/user-attachments/assets/25b3a271-01c9-4851-b146-6ad63ec860d1" />
+<img width="1664" height="1258" alt="image" src="https://github.com/user-attachments/assets/cfe5fdbe-534b-4892-814e-a67a26fd6618" />
